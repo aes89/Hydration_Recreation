@@ -1,5 +1,6 @@
-class InvalidNameError < StandardError
+class InvalidName < StandardError
 end
+
 class FloatNotInt < StandardError
 end
 
@@ -7,15 +8,15 @@ end
 #*** NAME
 def validate_name(name)
     name = name.strip
-    raise InvalidNameError, "That's not a name pal, try some letters." if name.empty?
+    raise InvalidName, "That's not a name pal, try some letters." if name.empty?
     name
 end
 
 def user
     puts "What's your name, friend?"
-    name = gets.chomp
+    name = gets.strip
     validate_name(name)
-rescue InvalidNameError => e
+rescue InvalidName => e
     puts "Invalid name, error details: #{e.message}"
     retry
 end
@@ -24,17 +25,16 @@ end
 #***GOAL
 
 def validate_goal(goal)
-    goal = goal.strip
-    raise InvalidNameError, "You can do better than that, we need some numbers here." if goal.empty?
-    raise FloatNotInt, "We're not splitting hairs here. Only whole numbers thanks." if goal.is_a? Float
+    raise InvalidName, "You can do better than that, we need some numbers here." if goal.empty?
+    raise FloatNotInt, "We're not splitting hairs here. Only whole numbers thanks." if goal == Float
     goal.to_i
 end
 
 def goal
     puts "How many points will you aim for?"
-    goal = gets.chomp
+    goal = gets.strip
     validate_goal(goal)
-    rescue InvalidNameError => e
+    rescue InvalidName => e
         puts "Invalid goal, error details: #{e.message}"
         retry
     rescue FloatNotInt => e
