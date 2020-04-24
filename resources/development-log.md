@@ -14,3 +14,7 @@ Difficulty with managing incorrec tinput for points goal. Empty string will retr
  (goal.to_f % 1) != 0.
 
  Folder formatting corrected following discussion with Carl, to push to github in correct directory structure. All capitals and spaces removed from file and directory titles, main contains readme.rb doc, presentation directory and source code directory to contain alll code files.
+
+ Chunk of software development plan not saved - to rewrite.
+
+ Goal input error handling complete. On manual testing string input retries, float input retried and integar input is stored. Automated testing file (including name and goal) was previously working but now says that errors are not raised for string and float, but they are on manual testing.
