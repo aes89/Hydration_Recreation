@@ -1,6 +1,6 @@
 #**** USER INPUTS NAME TESTING
 
-require_relative "invalidname_errorhandling.rb"
+require_relative "errorhandling.rb"
 
 describe "Validate name actually validates names" do
     it "should return a valid name if a valid name is given" do
@@ -12,19 +12,20 @@ describe "Validate name actually validates names" do
     end
 end
 
-#****USER INPUTS GOAL TESTING - FLOAT NOT WORKING
+#****USER INPUTS GOAL TESTING -- 24 and 27 aren't working, not passing to them  manual testing shows that events are passing that errors are being handled as expected
 
-describe "Goal validation should correctly throw errors if not ints" do
+describe "Goal validation should correctly throw errors if input is not an int" do
     it "should take an string of an int and return an int" do
         expect(validate_goal("1    ")).to eq(1)
     end
-    
-    it "should return a InvalidName" do
+    it "should return InvalidName" do
         expect{validate_goal("     ")}.to raise_error(InvalidName)
     end
-    
     it "should return InvalidName" do
-        expect{validate_goal{2.2}}.to raise_error(InvalidName)
+        expect{validate_goal(2.2)}.to raise_error(InvalidName)
+    end
+    it "should return InvalidName" do
+        expect(validate_goal("hello")).to raise_error(InvalidName)
     end
 end
 
