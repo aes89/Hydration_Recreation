@@ -1,8 +1,8 @@
-#***WELCOME
+***WELCOME
 puts "Welcome to 'Hydration Recreation' - where the more hydrated you are, the more points you get!"
 
-#*** NAME AND BLANK NAME ERROR HANDLING
-require_relative 'invalidname_errorhandling'
+*** NAME AND BLANK NAME ERROR HANDLING
+require_relative 'errorhandling'
 
 puts "Nice to meet you #{user}!"
 
@@ -34,7 +34,7 @@ puts "Did you know the average adult man (a bit less for ladies) is meant to get
 puts "I thought not."
 puts "let's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a dagy! If 1 glass of water is 125 points, that's 1,000 points a day"
 
-#*** SET GOAL AND BLANK GOAL ERROR HANDLING
+*** SET GOAL AND BLANK GOAL ERROR HANDLING
 
 goal
 
