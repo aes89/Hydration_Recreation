@@ -21,11 +21,11 @@ describe "Goal validation should correctly throw errors if input is not an int" 
     it "should return InvalidName" do
         expect{validate_goal("     ")}.to raise_error(InvalidName)
     end
-    it "should return InvalidName" do
-        expect{validate_goal(2.2)}.to raise_error(InvalidName)
+    it "should return FloaNotInt" do
+        expect{validate_goal("2.2")}.to raise_error(FloatNotInt)
     end
     it "should return InvalidName" do
-        expect(validate_goal("hello")).to raise_error(InvalidName)
+        expect{validate_goal("hello")}.to raise_error(InvalidName)
     end
 end
 
