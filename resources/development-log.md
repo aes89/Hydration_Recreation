@@ -11,10 +11,15 @@ Testing completed for invalid inputs on name (cannot be blank entry) and goal (c
 
 23/04/2020
 Difficulty with managing incorrec tinput for points goal. Empty string will retry and ask for input again, Float input would accept but not raise an error. Debugging revealed that input was being percieved as a srting, converted to a float then calculated if cleanly divisable by 1 or not:
- (goal.to_f % 1) != 0.
+(goal.to_f % 1) != 0.
 
- Folder formatting corrected following discussion with Carl, to push to github in correct directory structure. All capitals and spaces removed from file and directory titles, main contains readme.rb doc, presentation directory and source code directory to contain alll code files.
+Folder formatting corrected following discussion with Carl, to push to github in correct directory structure. All capitals and spaces removed from file and directory titles, main contains readme.rb doc, presentation directory and source code directory to contain alll code files.
 
- Chunk of software development plan not saved - to rewrite.
+Chunk of software development plan not saved - to rewrite.
 
- Goal input error handling complete. On manual testing string input retries, float input retried and integar input is stored. Automated testing file (including name and goal) was previously working but now says that errors are not raised for string and float, but they are on manual testing.
+24/04/2020
+Goal input error handling complete. On manual testing string input retries, float input retried and integar input is stored. Automated testing file (including name and goal) was previously working but now says that errors are not raised for string and float, but they are on manual testing. 
+Error resolved - calling wrong error name in one instance and used incorrect bracket on other.
+
+25/04/2020
+Manual testing of whole play_me.rb file, some minor errors. Inadvertently calling methods twice, resolved by storing method outcome as a variable and calling that (e.g. user name).
