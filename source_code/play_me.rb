@@ -1,13 +1,14 @@
-# # ***WELCOME
+# # # # ***WELCOME
 # puts "Welcome to 'Hydration Recreation' - where the more hydrated you are, the more points you get!"
 
-# # *** NAME AND BLANK NAME ERROR HANDLING
+# # # # *** NAME AND BLANK NAME ERROR HANDLING
 # require_relative 'errorhandling'
+
 
 # puts "Nice to meet you #{user}!"
 
 
-# #*** ARE YOU GOING TO PLAY?
+# # #*** ARE YOU GOING TO PLAY?
 
 # continue = false
 
@@ -28,50 +29,50 @@
 #       end
 # end
 
-# #***OUTPUT
+# # ***OUTPUT
 
 # puts "Did you know the average adult man (a bit less for ladies) is meant to get up to 4 litres per day? You get some from food, but you think you come close to this?"
 # puts "I thought not."
 # puts "let's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a dagy! If 1 glass of water is 125 points, that's 1,000 points a day"
 
-# #** SET GOAL AND GOAL ERROR HANDLING
+# # #** SET GOAL AND GOAL ERROR HANDLING
+# goalvariable = goal
 
-goal = 150000000000
 
-case goal
-when 0...500
-    puts " A good place to start, maybe you can try for more next time?"
-when 500..1500
-    puts "Good one"
-when 1500..INFINITY
-    puts "Have you heard of hyponatremia #{name}?"
+# if goalvariable < 500
+#         puts "#{goalvariable} points? A good place to start, maybe you can try for more next time?"
+# elsif (501..2000).include? goalvariable
+#         puts "#{goalvariable} points? A moise goal indeed."
+# elsif goalvariable > 1500
+#         puts "#{goalvariable} points? Alright, but have you heard of hyponatremia #{@name}?"
+# end
+
+# #*** TIMES
+
+
+def user_time
+    puts "Ok, be that way. Is it closer to breakfast, lunch or dinner?"
 end
 
-#*** TIMES
-# def user_time
-#     puts "Ok, be that way. Is it closer to breakfast, lunch or dinner?"
-    
-# end
 
+confirm = false
 
-# confirm = false
-
-# while !confirm
+while !confirm
     
-#     time = Time.new
-#     puts "It looks like it's #{time.hour}:#{time.min}. Is that right?"
-#     time_confirm = gets.chomp
+    time = Time.new
+    puts "It looks like it's #{time.hour}:#{time.min}. Is that right?"
+    time_confirm = gets.strip
     
-#         case time_confirm
-#         when "yes"
-#             puts "Great, let's see what you've drank today."
-#             break
-#         when "no"
-#             user_time
-#             break
-#         else
-#             puts "yes or no please"
-#         end
-# end
+        case time_confirm
+        when "yes"
+            puts "Great, let's see what you've drank today."
+            break
+        when "no"
+            user_time
+            break
+        else
+            puts "'yes' or 'no' please"
+        end
+end
 
  
