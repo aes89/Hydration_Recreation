@@ -14,8 +14,8 @@ end
 
 def user
     puts "What's your name, friend?"
-    name = gets.strip
-    validate_name(name)
+    @name = gets.strip
+    validate_name(@name)
 rescue InvalidName => e
     puts "Invalid name, error details: #{e.message}"
     retry
