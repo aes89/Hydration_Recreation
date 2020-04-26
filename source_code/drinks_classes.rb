@@ -1,4 +1,5 @@
 require 'tty-link'
+require 'rainbow'
 
 class DrinkPoints
     def initialize (amount, breakfastpoints, lunchpoints, dinnerpoints, breakfastMessage, lunchMessage, dinnerMessage)
@@ -32,14 +33,14 @@ class WaterPoints < DrinkPoints
     end
 
     def permanent
-        puts "Water is always a great idea"
+        puts Rainbow("Water is always a great idea!").blue
         @breakfastpoints * @amount
     end
 end
 
 class JuicePoints < DrinkPoints
     def initialize (amount)
-        super @amount = amount, @breakfastpoints = 110, @lunchpoints = 90, @dinnerpoints = 70, @breakfastMessage = "Juice is optimal morning drink!", @lunchMessage = "Not ideal, but I'll let it slide", @dinnerMessage = "Naughty naughty, less of that please"
+        super @amount = amount, @breakfastpoints = 110, @lunchpoints = 90, @dinnerpoints = 70, @breakfastMessage = Rainbow("Juice is optimal morning drink!").orange, @lunchMessage = Rainbow("Ok. But. You're not in kingergarten, are you?").orange, @dinnerMessage = Rainbow("Ok. But. You're not in kingergarten, are you?").orange
     end
 end
 
