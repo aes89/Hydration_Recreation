@@ -1,5 +1,6 @@
+require 'rainbow'
 # ***WELCOME
-puts "Welcome to 'Hydration Recreation' - where the more hydrated you are, the more points you get!"
+puts "Welcome to #{Rainbow("Hydration Recreation").blue} - where the more hydrated you are, the more points you get!"
 
 # *** NAME AND BLANK NAME ERROR HANDLING
 
@@ -29,22 +30,22 @@ while !continue
    case playing
 
    when "yes"
-     puts "Great! Let's get hydrated"
+     puts "Great! Let's get #{Rainbow("hydrated").blue}!"
      continue = true
     break
       when "no"
-      puts "Alright, cya"
+      puts "#{Rainbow("Alright, cya").red}"
       exit!
     else
-      puts "'yes' or 'no' please"
+      puts "'#{Rainbow("yes").red}' or '#{Rainbow("no").red}' please"
       end
 end
 
 # ***OUTPUT
 
-puts "Did you know the average adult man (a bit less for ladies) is meant to get up to 4 litres per day? You get some from food, but you think you come close to this?"
+puts "Did you know the average adult man (a bit less for ladies) is meant to get up to #{Rainbow("4 litres per day").red}? You get some from food, but you think you come close to this?"
 puts "I thought not."
-puts "let's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a dagy! If 1 glass of water is 125 points, that's 1,000 points a day"
+puts "let's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a dagy! If 1 glass of #{Rainbow("water").blue} is 125 points, that's 1,000 points a day"
 
 #*** GOAL INPUT AND VALIDATION
 
@@ -69,7 +70,7 @@ goalvariable = goal
 if goalvariable < 500
         puts "#{goalvariable} points? A good place to start, maybe you can try for more next time?"
 elsif (501..2000).include? goalvariable
-        puts "#{goalvariable} points? A moist goal indeed."
+        puts "#{goalvariable} points? A #{Rainbow("moist").blue} goal indeed"
 elsif goalvariable > 1500
         puts "#{goalvariable} points? Alright, but have you heard of hyponatremia #{current_user}?"
 end
@@ -95,20 +96,20 @@ time_of_day = time
 require_relative "drinks_classes"
 
 puts "Great, let's see what you've drank today."
-puts "How many glasses of water?"
+puts "How many glasses of #{Rainbow("water").blue}?"
 points_total = 0
 glasses_of_water = gets.to_i
 water_points = WaterPoints.new(glasses_of_water)
 points_total = points_total + water_points.permanent
 puts points_total
 
-puts "Now for the nauty stuff, how much juice have you had?"
+puts "How many glasses of #{Rainbow("juice").orange}?"
 glasses_of_juice = gets.to_i
 juice_points = JuicePoints.new(glasses_of_juice)
 points_total = points_total + juice_points.send(time_of_day)
 puts points_total
 
-puts "How many cups of tea or coffee?"
+puts "How many cups of #{Rainbow("tea").brown} or #{Rainbow("coffee").brown}?"
 glasses_of_caffinated = gets.to_i
 caffinated_points = CaffinatedPoints.new(glasses_of_caffinated)
 puts time_of_day
