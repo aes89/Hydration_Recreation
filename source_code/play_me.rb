@@ -2,7 +2,17 @@
 puts "Welcome to 'Hydration Recreation' - where the more hydrated you are, the more points you get!"
 
 # *** NAME AND BLANK NAME ERROR HANDLING
-require_relative 'errorhandling'
+
+require_relative "validate_name"
+
+def user
+    puts "What's your name, friend?"
+    name = gets.strip
+    validate_name(name)
+rescue InvalidInput => e
+    puts "Invalid name, error details: #{e.message}"
+    retry
+end
 
 current_user = user
 puts "Nice to meet you #{current_user}!"
@@ -20,6 +30,7 @@ while !continue
 
    when "yes"
      puts "Great! Let's get hydrated"
+     continue = true
     break
       when "no"
       puts "Alright, cya"
@@ -35,7 +46,23 @@ puts "Did you know the average adult man (a bit less for ladies) is meant to get
 puts "I thought not."
 puts "let's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a dagy! If 1 glass of water is 125 points, that's 1,000 points a day"
 
-#** SET GOAL AND GOAL ERROR HANDLING
+#*** GOAL INPUT AND VALIDATION
+
+
+require_relative "validate_goal"
+
+def goal
+    puts "How many points will you aim for?"
+    goal = gets.strip
+    validate_num(goal)
+    rescue InvalidInput => e 
+        puts "Invalid goal, error details: #{e.message}"
+        retry
+    rescue FloatNotInt => e
+        puts "Invalid goal, error details: #{e.message}"
+        retry
+end
+
 goalvariable = goal
 
 
@@ -49,48 +76,19 @@ end
 
 # #*** TIMES
 
-# # confirm = false
+require_relative "validate_time"
 
-# # while !confirm
-  
-# # *** AUTO TIME - remove?
-#     # time = Time.new
-#     # puts "It looks like it's #{time.hour}:#{time.min}. Is that right?"
-#     # puts "Is it morning, afternoon or night time?"
-#     # time_of_day = gets.chomp
-    
-#     # case time_confirm
-#     #     when "morning"
-#     #         puts "Great, let's see what you've drank today."
-#     #         break
-#     #     when "afternoon"
-#     #         user_time
-#     #         break
-#     #     when "night"
-
-#     #     end
-#     #     end
-# # end
-
-
-
-def validate_time_of_day(time_of_day)
-    raise InvalidInput, "Type 'breakfast', 'lunch' or 'dinner'." if time_of_day.empty?
-    # raise InvalidInput, "Type 'breakfast', 'lunch' or 'dinner'" if time_of_day.include?/[0-9]*$/
-    time_of_day
-end
-
-def time_of_day_validate
+def time
     puts "Is it closer to breakfast, lunch or dinner?"
-    time_of_day = gets.strip
-    validate_time_of_day(time_of_day)
-    rescue InvalidInput => e 
-        puts "Invalid time, error details: #{e.message}"
-        retry
+    time_of_day = gets
+    validate_time(time_of_day)
+rescue InvalidInput => e
+    puts "Error details: #{e.message}"
+    retry
+    time
 end
 
-time_of_day = time_of_day_validate
-puts time_of_day
+time_of_day = time
 
 #*** GET NUMBER OF CUPS FROM USER FOR DRINK TYPES
 
@@ -136,9 +134,6 @@ points_total = points_total + other_points.send(time_of_day)
 puts points_total
 
 #*** GOAL MET?
-points_total = 10
-goalvariable = 100
-
 
 
 def dinner_total(points_total, goalvariable)
