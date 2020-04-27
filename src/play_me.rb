@@ -277,6 +277,6 @@ when 'lunch'
   lunch_total(points_total, goalvariable)
 when 'dinner'
   dinner_total(points_total, goalvariable)
-else
+else        
   puts 'uh oh, something broke'
 end
