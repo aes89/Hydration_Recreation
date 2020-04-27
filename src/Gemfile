@@ -7,5 +7,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 # gem "rails"
 
 # ghperlinks
+gem 'artii'
 gem 'rainbow'
 gem 'tty-link'
+gem 'tty-progressbar'
