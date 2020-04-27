@@ -1,20 +1,16 @@
 require 'rainbow'
 # ***WELCOME
 require_relative "images"
-
+require_relative "text_output_method"
 #*** METHOD OF SLOW TEXT OUTPUT
 
-def slowly
-    yield.each_char { |c| putc c; $stdout.flush; sleep 0.01 }
-end
+
 
 welcome_image
 
 
 slowly do
-"Welcome to #{Rainbow("Hydration Recreation").blue} - where the more hydrated you are, the more points you get!
-
-"
+    "\nWelcome to #{Rainbow("Hydration Recreation").blue} - where the more hydrated you are, the more points you get!\n"
 end
 
 # *** NAME AND BLANK NAME ERROR HANDLING
@@ -23,7 +19,7 @@ require_relative "validate_name"
 
 def user
         slowly do
-            "What's your name, friend? "
+            "\nWhat's your name, friend? "
         end
     name = gets.strip
     validate_name(name)
@@ -33,6 +29,7 @@ rescue InvalidInput => e
 end
 
 current_user = user
+
 slowly do
 "
 Nice to meet you #{current_user}!
@@ -55,22 +52,18 @@ end
 
    when "yes"
         slowly do
-        "
-        Great! Let's get #{Rainbow("hydrated").blue}!
-        "
+        "\nGreat! Let's get #{Rainbow("hydrated").blue}!\n"
         end
      continue = true
     break
       when "no"
         slowly do
-"
-#{Rainbow("Alright, cya").red}
-"
+            "\n#{Rainbow("Alright, cya").red}\n"
         end
       exit!
     else
         slowly do
-            "'#{Rainbow("yes").red}' or '#{Rainbow("no").red}' please"
+            "\n'#{Rainbow("yes").red}' or '#{Rainbow("no").red}' please.\n"
         end
       end
 end
@@ -78,39 +71,46 @@ end
 # ***OUTPUT
 
 slowly do
-    "Did you know the average adult man (a bit less for ladies) is meant to get up to #{Rainbow("4 litres per day").yellow}? You get some from food, but you think you come close to this?
-    I thought not.
-    Let's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a dagy! If 1 glass of #{Rainbow("water").blue} is 125 points, that's #{Rainbow("1,000").yellow} points a day.
-    "
+    "\nDid you know the average adult man (a bit less for ladies) is meant to get up to #{Rainbow("4 litres per day").yellow}? You get some from food, but you think you come close to this? \n\nI thought not.\n\nLet's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a day! If 1 glass of #{Rainbow("water").blue} is 125 points, that's #{Rainbow("1,000").yellow} points a day\n"
 end
 #*** GOAL INPUT AND VALIDATION
 
 
-require_relative "validate_goal"
+require_relative "validate_num"
 
 def goal
     slowly do
-        "How many points will you aim for?"
+        "\nHow many points will you aim for? "
     end
     goal = gets.strip
     validate_num(goal)
     rescue InvalidInput => e 
-        puts "Invalid goal, error details: #{e.message}"
+        slowly do
+            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+        end
         retry
     rescue FloatNotInt => e
-        puts "Invalid goal, error details: #{e.message}"
+        slowly do
+            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+        end
         retry
 end
 
 goalvariable = goal
 
 
-if goalvariable < 500
-        puts "#{goalvariable} points? A good place to start, maybe you can try for more next time?"
+if goalvariable <= 500
+    slowly do
+        "\n#{goalvariable} points? A good place to start, maybe you can try for more next time?\n"
+    end
 elsif (501..2000).include? goalvariable
-        puts "#{goalvariable} points? A #{Rainbow("moist").blue} goal indeed"
-elsif goalvariable > 1500
-        puts "#{goalvariable} points? Alright, but have you heard of hyponatremia #{current_user}?"
+    slowly do
+        "\n#{goalvariable} points? A #{Rainbow("moist").blue} goal indeed.\n"
+    end
+elsif goalvariable > 2001
+    slowly do
+        "\n#{goalvariable} points? Alright, but have you heard of hyponatremia #{current_user}?\n"
+    end
 end
 
 # #*** TIMES
@@ -118,11 +118,15 @@ end
 require_relative "validate_time"
 
 def time
-    puts "Is it closer to breakfast, lunch or dinner?"
+    slowly do
+        "\nIs it closer to breakfast, lunch or dinner? "
+    end
     time_of_day = gets
     validate_time(time_of_day)
 rescue InvalidInput => e
-    puts "Error details: #{e.message}"
+    slowly do
+        "#{Rainbow("Error details: #{e.message}").red}"
+    end
     retry
     time
 end
@@ -131,75 +135,96 @@ time_of_day = time
 
 #*** GET NUMBER OF CUPS FROM USER FOR DRINK TYPES
 
+require_relative "validate_drinkinput"
 require_relative "drinks_classes"
+require_relative "validate_num"
 
-puts "Great, let's see what you've drank today."
-puts "How many glasses of #{Rainbow("water").blue}?"
+slowly do
+    "\nGreat, let's see what you've drank today.\n"
+end
+ 
 points_total = 0
-glasses_of_water = gets.to_i
+
+
+glasses_of_water = glasses_of_water_validation
+
 water_points = WaterPoints.new(glasses_of_water)
 points_total = points_total + water_points.permanent
-puts points_total
+slowly do
+    "\nPoints so far: #{points_total}\n"
+end
 
-puts "How many glasses of #{Rainbow("juice").orange}?"
-glasses_of_juice = gets.to_i
+
+glasses_of_juice = glasses_of_juice_validation
+
+
 juice_points = JuicePoints.new(glasses_of_juice)
 points_total = points_total + juice_points.send(time_of_day)
-puts points_total
 
-puts "How many cups of #{Rainbow("tea").brown} or #{Rainbow("coffee").brown}?"
-glasses_of_caffinated = gets.to_i
+slowly do
+    "\nPoints so far: #{points_total}\n"
+end
+
+glasses_of_caffinated = glasses_of_caffinated_validation
+
 caffinated_points = CaffinatedPoints.new(glasses_of_caffinated)
-puts time_of_day
 points_total = points_total + caffinated_points.send(time_of_day)
-puts points_total
 
-puts "How many cups wth #{Rainbow("alcohol").green}?"
-glasses_of_alcoholic = gets.to_i
+slowly do
+    "\nPoints so far: #{points_total}\n"
+end
+
+
+glasses_of_alcoholic = glasses_of_alcoholic_validation
+
 alcoholic_points = AlcoholicPoints.new(glasses_of_alcoholic)
 points_total = points_total + alcoholic_points.send(time_of_day)
-puts points_total
 
-puts "How many cups of soda?"
-glasses_of_soda = gets.to_i
+slowly do
+    "\nPoints so far: #{points_total}\n"
+end
+
+glasses_of_soda = glasses_of_soda_validation
+
 soda_points = SodaPoints.new(glasses_of_soda)
 points_total = points_total + soda_points.send(time_of_day)
-puts points_total
 
-puts "Anything other cups of undefined fluids?"
-glasses_of_other = gets.to_i
+slowly do
+    "\nPoints so far: #{points_total}\n"
+end
+
+glasses_of_other = glasses_of_other_validation
+
 other_points = OtherPoints.new(glasses_of_other)
 points_total = points_total + other_points.send(time_of_day)
-puts points_total
+
+slowly do
+    "\nPoints total: #{points_total}\n"
+end
 
 #*** calculating bar animation
 require_relative "progress_bar"
 
 #*** GOAL MET?
 
-def dinner_total(points_total, goalvariable)
-    if points_total > goalvariable
-        hydration_achieved
-        puts "Well done! Your got #{points_total - goalvariable} points over your goal!"
-    elsif points_total < goalvariable
-        puts "That's a shame, you needed #{goalvariable - points_total} more points."
-    elsif points_total == goalvariable
-        puts "Well done! You just made it!"
-    else
-        puts "Uh oh, something's gone wrong."
-    end
-end
 
 def breakfast_total(points_total, goalvariable)
 points_total = points_total / 3
 goalvariable = goalvariable / 3 
     if points_total > goalvariable
-        hydration_achieved
-        puts "Well done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!"
+        hydration_imminent
+        slowly do
+            "Well done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!"
+        end
     elsif points_total < goalvariable
-        puts "You're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!"
+        slowly do
+            "You're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!"
+        end
     elsif points_total == goalvariable
-        puts "Well done! You're on track to meet your goal!"
+        hydration_imminent
+        slowly do
+            "Well done! You're on track to meet your goal!"
+        end 
     else
         puts "Uh oh, something's gone wrong."
     end
@@ -209,14 +234,44 @@ def lunch_total(points_total, goalvariable)
     points_total = points_total / 6 
     goalvariable= goalvariable / 6 
         if points_total > goalvariable
-            hydration_achieved
-            puts "Well done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!"
+            hydration_imminent
+            slowly do
+                "Well done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!"
+            end
         elsif points_total < goalvariable
-            puts "You're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!"
+            slowly do
+                "You're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!"
+            end
         elsif points_total == goalvariable
-            puts "Well done! You're on track to meet your goal!"
+            hydration_achieved
+            slowly do
+                "Well done! You're on track to meet your goal!"
+            end
         else
-            puts "Uh oh, something's gone wrong."
+            slowly do
+                "Uh oh, something's gone wrong."
+            end
+        end
+    end
+
+    def dinner_total(points_total, goalvariable)
+        if points_total > goalvariable
+            hydration_achieved
+            slowly do
+                "Well done! Your got #{points_total - goalvariable} points over your goal!"
+            end
+        elsif points_total < goalvariable
+            slowly do
+                "That's a shame, you needed #{goalvariable - points_total} more points. Try again tomorrow!"
+            end
+        elsif points_total == goalvariable
+            slowly do 
+                "Well done! You just made it!"
+            end
+        else
+            slowly do
+                "Uh oh, something's gone wrong."
+            end
         end
     end
 
