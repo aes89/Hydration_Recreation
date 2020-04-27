@@ -12,18 +12,30 @@ class DrinkPoints
     end
 
     def breakfast
-        puts @breakfastMessage
-        @amount * @breakfastpoints
+        if @amount == 0
+            @amount * @breakfastpoints
+        elsif @amount >= 1
+            puts @breakfastMessage
+            @amount * @breakfastpoints
+        end
     end
 
     def lunch
-        puts @lunchMessage
-        @amount * @lunchpoints
+        if @amount == 0
+            @amount * @lunchpointspoints
+        else
+            puts @lunchMessage
+            @amount * @lunchpointspoints
+        end
     end
 
     def dinner
-        puts @dinnerMessage
-        @amount * @dinnerpoints
+        if @amount == 0
+            @amount * @dinnerpoints
+        elsif @amount >= 1
+            puts @dinnerMessage
+            @amount * @dinnerpoints
+        end
     end
 end
 
