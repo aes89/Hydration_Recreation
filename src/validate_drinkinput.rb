@@ -1,4 +1,6 @@
-#*** VALIDATES INPUT OF NUMBER OF GLASSES OF DRINKS
+# frozen_string_literal: true
+
+# *** VALIDATES INPUT OF NUMBER OF GLASSES OF DRINKS
 
 class InvalidInput < StandardError
 end
@@ -6,118 +8,118 @@ end
 class FloatNotInt < StandardError
 end
 
-#WATER
+# WATER
 
 def glasses_of_water_validation
-    slowly do
-        "\nHow many glasses of #{Rainbow("water").blue}? "
-    end
-    water = gets.strip
-    validate_num(water)
-    rescue InvalidInput => e 
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
-    rescue FloatNotInt => e
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
+  slowly do
+    "\nHow many glasses of #{Rainbow('water').blue}? "
+  end
+  water = gets.strip
+  validate_num(water)
+rescue InvalidInput => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
+rescue FloatNotInt => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
 end
 
-#JUICE
+# JUICE
 
 def glasses_of_juice_validation
-    slowly do
-        "\nHow many glasses of #{Rainbow("juice").orange}? "
-    end
-    juice = gets.strip
-    validate_num(juice)
-    rescue InvalidInput => e 
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
-    rescue FloatNotInt => e
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
+  slowly do
+    "\nHow many glasses of #{Rainbow('juice').orange}? "
+  end
+  juice = gets.strip
+  validate_num(juice)
+rescue InvalidInput => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
+rescue FloatNotInt => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
 end
 
 # CAFFINATED DRINKS
 def glasses_of_caffinated_validation
-    slowly do
-        "\nHow many glasses of #{Rainbow("tea").brown} or #{Rainbow("coffee").brown}? "
-    end
-    caffinated = gets.strip
-    validate_num(caffinated)
-    rescue InvalidInput => e 
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
-    rescue FloatNotInt => e
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
+  slowly do
+    "\nHow many glasses of #{Rainbow('tea').brown} or #{Rainbow('coffee').brown}? "
+  end
+  caffinated = gets.strip
+  validate_num(caffinated)
+rescue InvalidInput => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
+rescue FloatNotInt => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
 end
 
-#ALCOHOLIC DRINKS
+# ALCOHOLIC DRINKS
 def glasses_of_alcoholic_validation
-    slowly do
-        "\nHow many glasses wth #{Rainbow("alcohol").green}? "
-    end
-    alcoholic = gets.strip
-    validate_num(alcoholic)
-    rescue InvalidInput => e 
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
-    rescue FloatNotInt => e
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
+  slowly do
+    "\nHow many glasses wth #{Rainbow('alcohol').green}? "
+  end
+  alcoholic = gets.strip
+  validate_num(alcoholic)
+rescue InvalidInput => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
+rescue FloatNotInt => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
 end
 
-#SODA DRINKS
+# SODA DRINKS
 def glasses_of_soda_validation
-    slowly do
-        "\nHow many glasses of soda? "
-    end
-    soda = gets.strip
-    validate_num(soda)
-    rescue InvalidInput => e 
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
-    rescue FloatNotInt => e
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
+  slowly do
+    "\nHow many glasses of soda? "
+  end
+  soda = gets.strip
+  validate_num(soda)
+rescue InvalidInput => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
+rescue FloatNotInt => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
 end
 
-#OTHER DRINKS
+# OTHER DRINKS
 def glasses_of_other_validation
-    slowly do
-        "\nAny other glasses of undefined fluids? "
-    end
-    other = gets.strip
-    validate_num(other)
-    rescue InvalidInput => e 
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
-    rescue FloatNotInt => e
-        slowly do
-            "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
-        end
-        retry
+  slowly do
+    "\nAny other glasses of undefined fluids? "
+  end
+  other = gets.strip
+  validate_num(other)
+rescue InvalidInput => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
+rescue FloatNotInt => e
+  slowly do
+    "\n#{Rainbow("Invalid goal, error details: #{e.message}").red}\n"
+  end
+  retry
 end
