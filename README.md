@@ -1,10 +1,11 @@
-#H2 Statement of Purpose and Scope
+# Statement of Purpose and Scope
 
-#H3 Target audience:
+### Target audience:
 This app is designed to help users who are at a desk most of the day (such as students and educators using online platforms) increase their water consumption throughout the day in a fun way.
 
-#H3 Why developed? 
+### Why developed? 
 Many people prefer caffeinated drinks or fail to move away from their desk and don’t drink enough water. Dehydration has negative impacts on most systems in the body and may even impact productivity, so increasing water consumption is in everyone’s best interest!
+
 
 Feature 1 - Readability:
 The user interacts with the app through terminal, which can be difficult to track when everything is black and white and delivered in immediate, large chunks of text.
@@ -26,7 +27,7 @@ TTY-progressbar was used to create the progress bar shown before the final point
 Rainbow was used to change the colours of some output text.
 The following code was used to return the output text character by character:
  
- /Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 6.04.48 pm.png
+ ![Screen shot 1](./docs/other_images/screenshot-1.png)
 
 Feature 2 - Information gathering and validating:
 The app manages incorrect input in multiple ways.
@@ -40,7 +41,7 @@ The app stores time-sensitive point values and feedback messages for drinks with
 
 Points and amounts of drinks are converted to integers (value.to_i) to execute basic mathematic functions, which vary based on the time entered. The correct functions are selected using a case statement:  
 
-/Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 6.35.49 pm.png
+![Screen shot 2](./docs/other_images/screenshot-2.png)
 
 Then and If statement selects the appropriate math and feedback message. For example, if the goal is higher than the total points earned (if points_total < goalvariable) the app will  tell the user they did not meet their goal, and how many points they missed it by.
 
@@ -53,20 +54,20 @@ The user will simply have to run the app ($ ruby play_me.rb) and be presented wi
 Feature 2 - Information gathering and validating:
 The user will be asked to enter specific information:  
 
-/Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 7.01.24 pm.png
+![Screen shot 3](./docs/other_images/screenshot-3.png)
 
 Errors are reported and managed with the following example messages:
  
-/Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 7.02.13 pm.png
+![Screen shot 4](./docs/other_images/screenshot-4.png)
 
-/Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 7.03.46 pm.png
+![Screen shot 5](./docs/other_images/screenshot-5.png)
 
 Correct input either get feedback (as below) or advances the program:
  
- /Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 7.02.51 pm.png
+ ![Screen shot 6](./docs/other_images/screenshot-6.png)
  
 Feature 3 – Calculation and Evaluation:
 The app will progress through automatically when correct input is entered. Errors in this feature would be due to internal issues and should display the error message “Uh oh, something's gone wrong” although this has not been encountered in testing.
  
-/Users/Adrienne/Desktop/Ruby/Terminal_Assignment/Hydration_Recreation/docs/other_images/Screen Shot 2020-04-27 at 7.08.43 pm.png
+![Screen shot 7](./docs/other_images/screenshot-7.png)
 
