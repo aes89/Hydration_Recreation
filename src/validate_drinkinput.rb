@@ -10,7 +10,7 @@ end
 
 def glasses_of_water_validation
     slowly do
-        "\nHow many glasses of #{Rainbow("water").blue}?\n"
+        "\nHow many glasses of #{Rainbow("water").blue}? "
     end
     water = gets.strip
     validate_num(water)
@@ -30,7 +30,7 @@ end
 
 def glasses_of_juice_validation
     slowly do
-        "\nHow many glasses of #{Rainbow("juice").orange}?\n"
+        "\nHow many glasses of #{Rainbow("juice").orange}? "
     end
     juice = gets.strip
     validate_num(juice)
@@ -49,7 +49,7 @@ end
 # CAFFINATED DRINKS
 def glasses_of_caffinated_validation
     slowly do
-        "\nHow many glasses of #{Rainbow("tea").brown} or #{Rainbow("coffee").brown}?\n"
+        "\nHow many glasses of #{Rainbow("tea").brown} or #{Rainbow("coffee").brown}? "
     end
     caffinated = gets.strip
     validate_num(caffinated)
@@ -68,7 +68,7 @@ end
 #ALCOHOLIC DRINKS
 def glasses_of_alcoholic_validation
     slowly do
-        "\nHow many glasses wth #{Rainbow("alcohol").green}?\n"
+        "\nHow many glasses wth #{Rainbow("alcohol").green}? "
     end
     alcoholic = gets.strip
     validate_num(alcoholic)
@@ -87,7 +87,7 @@ end
 #SODA DRINKS
 def glasses_of_soda_validation
     slowly do
-        "\nHow many glasses of soda?\n"
+        "\nHow many glasses of soda? "
     end
     soda = gets.strip
     validate_num(soda)
@@ -106,7 +106,7 @@ end
 #OTHER DRINKS
 def glasses_of_other_validation
     slowly do
-        "\nAny other glasses of undefined fluids?\n"
+        "\nAny other glasses of undefined fluids? "
     end
     other = gets.strip
     validate_num(other)

@@ -71,8 +71,9 @@ end
 # ***OUTPUT
 
 slowly do
-    "\nDid you know the average adult man (a bit less for ladies) is meant to get up to #{Rainbow("4 litres per day").yellow}? You get some from food, but you think you come close to this? \n\nI thought not.\n\nLet's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a day! If 1 glass of #{Rainbow("water").blue} is 125 points, that's #{Rainbow("1,000").yellow} points a day\n"
+    "\nDid you know the average adult man is meant to get up to #{Rainbow("4 litres per day").yellow}? It's a bit less for ladies, also, health recommendations are not very gender inclusive. You get some from food, but you think you come close to this? \n\nI thought not.\n\nLet's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a day! If 1 glass of #{Rainbow("water").blue} is 125 points, that's #{Rainbow("1,000").yellow} points a day\n"
 end
+
 #*** GOAL INPUT AND VALIDATION
 
 
@@ -125,7 +126,7 @@ def time
     validate_time(time_of_day)
 rescue InvalidInput => e
     slowly do
-        "#{Rainbow("Error details: #{e.message}").red}"
+        "\n#{Rainbow("Error details: #{e.message}").red}\n"
     end
     retry
     time
@@ -140,7 +141,7 @@ require_relative "drinks_classes"
 require_relative "validate_num"
 
 slowly do
-    "\nGreat, let's see what you've drank today.\n"
+    "\nGreat! Let's see what you've drank today.\n"
 end
  
 points_total = 0
@@ -151,7 +152,7 @@ glasses_of_water = glasses_of_water_validation
 water_points = WaterPoints.new(glasses_of_water)
 points_total = points_total + water_points.permanent
 slowly do
-    "\nPoints so far: #{points_total}\n"
+    "\nPoints so far: #{Rainbow("#{points_total}").yellow}\n"
 end
 
 
@@ -162,8 +163,9 @@ juice_points = JuicePoints.new(glasses_of_juice)
 points_total = points_total + juice_points.send(time_of_day)
 
 slowly do
-    "\nPoints so far: #{points_total}\n"
+    "\nPoints so far: #{Rainbow("#{points_total}").yellow}\n"
 end
+
 
 glasses_of_caffinated = glasses_of_caffinated_validation
 
@@ -171,7 +173,7 @@ caffinated_points = CaffinatedPoints.new(glasses_of_caffinated)
 points_total = points_total + caffinated_points.send(time_of_day)
 
 slowly do
-    "\nPoints so far: #{points_total}\n"
+    "\nPoints so far: #{Rainbow("#{points_total}").yellow}\n"
 end
 
 
@@ -181,7 +183,7 @@ alcoholic_points = AlcoholicPoints.new(glasses_of_alcoholic)
 points_total = points_total + alcoholic_points.send(time_of_day)
 
 slowly do
-    "\nPoints so far: #{points_total}\n"
+    "\nPoints so far: #{Rainbow("#{points_total}").yellow}\n"
 end
 
 glasses_of_soda = glasses_of_soda_validation
@@ -190,7 +192,7 @@ soda_points = SodaPoints.new(glasses_of_soda)
 points_total = points_total + soda_points.send(time_of_day)
 
 slowly do
-    "\nPoints so far: #{points_total}\n"
+    "\nPoints so far: #{Rainbow("#{points_total}").yellow}\n"
 end
 
 glasses_of_other = glasses_of_other_validation
@@ -199,7 +201,7 @@ other_points = OtherPoints.new(glasses_of_other)
 points_total = points_total + other_points.send(time_of_day)
 
 slowly do
-    "\nPoints total: #{points_total}\n"
+    "\nTotal points: #{Rainbow("#{points_total}").yellow}\n"
 end
 
 #*** calculating bar animation
@@ -207,26 +209,27 @@ require_relative "progress_bar"
 
 #*** GOAL MET?
 
-
 def breakfast_total(points_total, goalvariable)
 points_total = points_total / 3
 goalvariable = goalvariable / 3 
     if points_total > goalvariable
         hydration_imminent
         slowly do
-            "Well done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!"
+            "\nWell done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!\n"
         end
     elsif points_total < goalvariable
         slowly do
-            "You're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!"
+            "\nYou're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!\n"
         end
     elsif points_total == goalvariable
         hydration_imminent
         slowly do
-            "Well done! You're on track to meet your goal!"
+            "\nWell done! You're on track to meet your goal!\n"
         end 
     else
-        puts "Uh oh, something's gone wrong."
+        slowly do
+            "\nUh oh, something's gone wrong.\n"
+        end
     end
 end
 
@@ -236,20 +239,20 @@ def lunch_total(points_total, goalvariable)
         if points_total > goalvariable
             hydration_imminent
             slowly do
-                "Well done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!"
+                "\nWell done! You're #{points_total - goalvariable} points ahead! At this pace you'll meet your goal!\n"
             end
         elsif points_total < goalvariable
             slowly do
-                "You're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!"
+                "\nYou're #{goalvariable - points_total} points behind, you'll need to catch up to meet your goal!\n"
             end
         elsif points_total == goalvariable
             hydration_achieved
             slowly do
-                "Well done! You're on track to meet your goal!"
+                "\nWell done! You're on track to meet your goal!\n"
             end
         else
             slowly do
-                "Uh oh, something's gone wrong."
+                "\nUh oh, something's gone wrong.\n"
             end
         end
     end
@@ -258,19 +261,19 @@ def lunch_total(points_total, goalvariable)
         if points_total > goalvariable
             hydration_achieved
             slowly do
-                "Well done! Your got #{points_total - goalvariable} points over your goal!"
+                "\nWell done! Your got #{points_total - goalvariable} points over your goal!\n"
             end
         elsif points_total < goalvariable
             slowly do
-                "That's a shame, you needed #{goalvariable - points_total} more points. Try again tomorrow!"
+                "\nThat's a shame, you needed #{goalvariable - points_total} more points. Try again tomorrow!\n"
             end
         elsif points_total == goalvariable
             slowly do 
-                "Well done! You just made it!"
+                "\nWell done! You just made it!\n"
             end
         else
             slowly do
-                "Uh oh, something's gone wrong."
+                "\nUh oh, something's gone wrong.\n"
             end
         end
     end
@@ -284,4 +287,4 @@ def lunch_total(points_total, goalvariable)
         dinner_total(points_total, goalvariable)
     else
         puts "uh oh, something broke"
-    end 
+    end
