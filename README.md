@@ -83,3 +83,10 @@ The app will progress through automatically when correct input is entered. Error
 |  Points outcome feedback | points are evaluated against goal  | goal = 500, points = 355. 145 until goal  |  as expected | yes  |
 |  Points outcome feedback | points are evaluated against goal  | goal = 500, points = 710. Goal beaten by 355  |  as expected | yes  |
 
+### Help
+
+It's as easy as 1, 2, 3.
+
+1. Clone the repository - https://github.com/aes89/Hydration_Recreation.git.
+2. CD into `src` and run `bundle install` in the terminal to install all the necessary gems.
+3. In the terminal, run `ruby play_me.rb`, follow the instructions and get hydrated!
