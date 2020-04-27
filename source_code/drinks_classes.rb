@@ -1,5 +1,6 @@
-require 'tty-link'
-require 'rainbow'
+require 'tty-link' #** Gem
+require 'rainbow' #** Gem
+require_relative "text_output_method"
 
 class DrinkPoints
     def initialize (amount, breakfastpoints, lunchpoints, dinnerpoints, breakfastMessage, lunchMessage, dinnerMessage)
@@ -22,10 +23,10 @@ class DrinkPoints
 
     def lunch
         if @amount == 0
-            @amount * @lunchpointspoints
+            @amount * @lunchpoints
         else
             puts @lunchMessage
-            @amount * @lunchpointspoints
+            @amount * @lunchpoints
         end
     end
 
@@ -64,7 +65,7 @@ end
 
 class AlcoholicPoints < DrinkPoints
     def initialize (amount)
-        super @amount = amount, @breakfastpoints = -50, @lunchpoints = 20, @dinnerpoints = 50, @breakfastMessage = "In the morning? Maybe visit this site: #{TTY::Link.link_to("Alcoholics Anonymous", "https://aa.org.au/")}", @lunchMessage = "Not ideal, but I'll let it slide", @dinnerMessage = "Not needed but preferable in the evening."
+        super @amount = amount, @breakfastpoints = -50, @lunchpoints = 20, @dinnerpoints = 50, @breakfastMessage = "#{Rainbow("In the morning? Maybe visit this site: #{TTY::Link.link_to("Alcoholics Anonymous", "https://aa.org.au/")}").green}", @lunchMessage = "#{Rainbow("Not ideal, but I'll let it slide").green}", @dinnerMessage = "#{Rainbow("Not needed but preferable in the evening.").green}"
     end
 end
 
