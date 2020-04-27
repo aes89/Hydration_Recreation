@@ -1,4 +1,4 @@
-require_relative "validate_goal"
+require_relative "validate_num"
 
 #****USER INPUTS GOAL TESTING 
 
