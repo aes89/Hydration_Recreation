@@ -71,8 +71,15 @@ The app will progress through automatically when correct input is entered. Error
  
 ![Screen shot 7](./docs/other_images/screenshot-7.png)
 
-| Feaure  | What is it  | Ecpected outcome  |  Actual outcome |  Is it a problem? |
+| Feaure  | What is it  | Expected outcome  |  Actual outcome |  Is it a problem? |
 |---|---|---|---|---|
 | Welcome image |  Artii image to welcome to game |  loads automatically |  loads automatically |  no |
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  User asked to play | app seeks yes or no input  | "yes" progresses, "no" quite, other input retries  |  as expected |  no |
+| Validates input |  App asks name  |  App asks name, doesn't validate blank input |  as expected | no  |
+|  Validates input |  App asks for goal | App asks goal, doesn't validate blank input, letters or floats |  as expected |  no |
+|  Stores input |  goal validated then stored |  goal is returned in confirmation statement |  as expected | no  |
+|  Generates points |  points correctly return and add |  breakfast - 1 glass of each 355 |  as expected |  no |
+|  Generates points |  points correctly return and add |  lunch - 1 glass of each 412|  as expected | no  |
+|  Points outcome feedback | points are evaluated against goal  | goal = 500, points = 355. 145 until goal  |  as expected | yes  |
+|  Points outcome feedback | points are evaluated against goal  | goal = 500, points = 710. Goal beaten by 355  |  as expected | yes  |
+
