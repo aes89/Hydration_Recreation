@@ -1,5 +1,6 @@
-require 'rainbow'
 # ***WELCOME
+
+require 'rainbow'
 require_relative "images"
 require_relative "text_output_method"
 #*** METHOD OF SLOW TEXT OUTPUT
@@ -71,7 +72,7 @@ end
 # ***OUTPUT
 
 slowly do
-    "\nDid you know the average adult man is meant to get up to #{Rainbow("4 litres per day").yellow}? It's a bit less for ladies, also, health recommendations are not very gender inclusive. You get some from food, but you think you come close to this? \n\nI thought not.\n\nLet's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a day! If 1 glass of #{Rainbow("water").blue} is 125 points, that's #{Rainbow("1,000").yellow} points a day\n"
+    "\nDid you know the average adult man is meant to get up to #{Rainbow("4 litres per day").yellow}? It's a bit less for ladies, also, health recommendations are not very gender inclusive. You get some from food, but you think you come close to drinking 4 litres? \n\nI thought not.\n\nLet's say 1 glass is 500mL (more than a soda can) - that's 8 glasses a day! If 1 glass of #{Rainbow("water").blue} is 125 points, that's #{Rainbow("1,000").yellow} points a day.\nHint: drinks other than water will be worth less points.\n"
 end
 
 #*** GOAL INPUT AND VALIDATION
